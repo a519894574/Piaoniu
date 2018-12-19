@@ -11,5 +11,5 @@ public interface ShowDao {
     List<ShowType> getShowType();
 
     //获取演出节目
-    List<Show> getShow(@Param(""));
+    List<Show> getShow();
 }

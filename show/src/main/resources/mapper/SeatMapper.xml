@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkx.show.dao.seat.SeatDao">
+    <select id="getSeat" resultType="int">
+      select seat_id from order_seat where show_id=#{show_id} order by seat_id
+    </select>
+
+    <select id="getSeatNum" resultType="int">
+        select  count(*) from seat_#{g_id}
+    </select>
+
+    <select id="getSeatInfo" resultType="com.comm.comm.model.Seat_info">
+        select a.*,b.showp_price from seat_#{show_id} a,show_price b where b.show_id=#{show_id} and b.grade_id=a.grade_id
+    </select>
+</mapper>

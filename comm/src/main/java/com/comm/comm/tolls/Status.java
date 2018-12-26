@@ -2,7 +2,7 @@ package com.comm.comm.tolls;
 
 //状态码
 public class Status {
-    public static Json getStatus(int status,Object... data){
+    public static Json getStatus(int status,Object data){
         Json json=new Json();
         String message=null;
         switch (status){

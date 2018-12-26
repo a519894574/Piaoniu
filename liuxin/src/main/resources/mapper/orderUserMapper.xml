@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.liuxin.dao.OrderUserDao">
+
+    <!--根据订单状态查询订单-->
+    <select id="getOrder" resultType="com.comm.comm.model.Order">
+        select a.* , b.* , c.guildhall_address , d.order_status , e.discount_status from order_user a, show_base b , guildhall c ,order_status d , discount_status e where
+        a.show_id = b.show_id and b.showads_id = c.guildhall_id and a.order_status_id = d.status_id and a.discount_status_id = e.discount_status_id  and a.user_id = #{user_id}
+        <if test="status_id != 0">
+            and order_status_id = #{status_id}
+        </if>
+    </select>
+
+    <!--根据user_id status_id查询所有订单-->
+    <select id="getInfo" resultType="com.comm.comm.model.OrderInfo">
+        select a.* , b.* , c.guildhall_address , d.order_status from order_user a, show_base b , guildhall c ,order_status d where
+        a.show_id = b.show_id and b.showads_id = c.guildhall_id and a.order_status_id = d.status_id and a.user_id = #{user_id}
+        <if test="status_id != 0">
+            and order_status_id = #{status_id}
+        </if>
+    </select>
+
+    <select id="getSeat" resultType="com.comm.comm.model.OrderSeat">
+        select   b.seat_number , b.seat_price  from order_user a, order_seat b where a.show_id=b.show_id and a.order_id = #{order_id};
+    </select>
+
+</mapper>

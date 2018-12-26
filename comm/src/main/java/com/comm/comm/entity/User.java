@@ -14,7 +14,7 @@ public class User implements Serializable {
     @Column(name = "user_name" , columnDefinition = "varchar(20) COMMENT '用户名'")
     private String user_name;
     @Column(name = "user_telephone" , columnDefinition = "varchar(20) COMMENT '电话号码'")
-    private String user_telelphone;
+    private String user_telephone;
     @Column(name = "user_balance" , columnDefinition = "double COMMENT '余额'")
     private double user_balance;
     @Column(name = "user_headphoto" , columnDefinition = "varchar(20) COMMENT '头像'")
@@ -38,12 +38,12 @@ public class User implements Serializable {
         this.user_name = user_name;
     }
 
-    public String getUser_telelphone() {
-        return user_telelphone;
+    public String getUser_telephone() {
+        return user_telephone;
     }
 
-    public void setUser_telelphone(String user_telelphone) {
-        this.user_telelphone = user_telelphone;
+    public void setUser_telephone(String user_telephone) {
+        this.user_telephone = user_telephone;
     }
 
     public double getUser_balance() {

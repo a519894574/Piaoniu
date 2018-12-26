@@ -1,0 +1,15 @@
+server:
+  port: 8082
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.51.182:3306/tucow?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+mybatis:
+ mapper-locations: classpath:Mapper/*.xml
+ type-aliases-package: com.pgj.demo.dao

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pgj.demo.dao.AddressDao">
+    <select id="findAllByUser_id" resultType="com.comm.comm.entity.Address">
+        select * from address where user_id=#{user_id};
+    </select>
+    <delete id="deleteAddressByAddress_id" parameterType="int">
+        delete from address where address_id=#{address_id};
+    </delete>
+    <insert id="insertAddress" parameterType="com.comm.comm.entity.Address">
+      insert into address(address_area,address_street,address_name,address_telephone,user_id)
+      values (#{address_area},#{address_street},#{address_name},#{address_telephone},#{user_id});
+    </insert>
+    </mapper>

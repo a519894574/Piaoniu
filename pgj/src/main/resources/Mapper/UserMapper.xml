@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pgj.demo.dao.UserDao">
+    <select id="findAllByUser_id" resultType="com.comm.comm.entity.User">
+        select * from user where user_id=#{user_id};
+    </select>
+    <update id="updateBytelephone" >
+        update user set user_headphoto=#{user_headphoto},user_signature=#{user_signature} where user_id=#{user_id};
+    </update>
+    <update id="updatebalanceByid" >
+        update user set user_balance=#{user_balance} where user_id=#{user_id};
+    </update>
+</mapper>

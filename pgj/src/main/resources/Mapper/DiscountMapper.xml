@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pgj.demo.dao.DiscountDao">
+    <insert id="insertDiscount" parameterType="com.comm.comm.entity.Discount">
+        insert into discount(discount_money,showt_id,discount_begin,discount_end,discount_status_id,user_id) values
+        (#{discount_money},#{showt_id},#{discount_begin},#{discount_end},#{discount_status_id},#{user_id})
+    </insert>
+    <select id="selectByUidAndSid" parameterType="com.comm.comm.entity.Discount" resultType="com.comm.comm.model.Discounts">
+        select a.discount_money,a.discount_begin,a.discount_end,b.showt_name from discount a,show_type b where a.discount_status_id=#{discount_status_id} and user_id=#{user_id}
+    </select>
+    <select id="selectByUidAndShowid" parameterType="com.comm.comm.entity.Discount" resultType="com.comm.comm.model.Discounts">
+        select a.discount_id,a.discount_money,a.discount_begin,a.discount_end,b.showt_name from discount a,show_type b where a.showt_id=#{showt_id} and user_id=#{user_id} and a.discount_status_id=1 and a.showt_id=b.showt_id
+    </select>
+    <select id="selectByStatus" resultType="com.comm.comm.entity.Discount">
+        select * from discount where discount_status_id=1
+    </select>
+    <update id="updateByDid" parameterType="com.comm.comm.entity.Discount">
+        update discount set discount_status_id=3 where discount_id=#{discount_id}
+    </update>
+    <update id="updateByDids" parameterType="com.comm.comm.entity.Discount">
+        update discount set discount_status_id=2 where discount_id=#{discount_id}
+    </update>
+</mapper>

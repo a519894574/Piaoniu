@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkx.show.dao.show.ShowDao">
+    <select id="getShowType" resultType="com.comm.comm.entity.ShowType">
+      select * from show_type
+    </select>
+    <!--Show-->
+    <select id="getShow" resultType="com.comm.comm.model.Show">
+        select b.*,g.guildhall_name,t.showt_name from show_base b,guildhall g,show_type t where b.show_type=t.showt_id and b.showads_id=g.guildhall_id
+        <if test="show_type!=0">
+            and b.show_type = #{show_type}
+        </if>
+        <if test="show_city!=0">
+            and b.show_city = #{show_city}
+        </if>
+        <if test="show_date02!=null and show_date01!=null">
+            and b.show_date &lt;=#{show_date01} b.show_date &gt;=#{show_date02}
+        </if>
+        <if test="show_name!=null">
+            and b.show_name like concat ("%",#{show_name},"%")
+        </if>
+        order by b.show_id desc
+    </select>
+
+    <select id="getPrice" resultType="com.comm.comm.model.Show_price">
+        select * from show_price where show_id=#{show_id}
+    </select>
+
+    <select id="getShowInfo" resultType="com.comm.comm.model.Show_info">
+         select b.*,g.guildhall_name,t.showt_name,x.show_te_text from show_base b,guildhall g,show_type t,show_text x where b.show_type=t.showt_id and b.showads_id=g.guildhall_id and b.show_id=x.show_te_id and b.show_id = #{show_id}
+    </select>
+</mapper>

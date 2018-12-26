@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lkx.show.dao.login.LoginDao">
+    <select id="findUser" resultType="int">
+      select count(1) from user where user_telephone=#{user_telephone}
+    </select>
+
+    <select id="findPass" resultType="com.comm.comm.entity.User">
+        select * from user where user_telephone=#{user_telephone}
+    </select>
+
+    <insert id="userAdd">
+        insert into user (user_balance,user_headphoto,user_name,user_signature,user_telephone) values
+        (0,,#{user_telephone},,#{user_telephone})
+    </insert>
+</mapper>

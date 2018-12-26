@@ -28,6 +28,86 @@ public class ShowBase {
     @Column(name = "showADS_id", columnDefinition = "integer(11) COMMENT '演出会管ID'")
     private int showADS_id;
 
+    public int getShow_id() {
+        return show_id;
+    }
+
+    public void setShow_id(int show_id) {
+        this.show_id = show_id;
+    }
+
+    public int getTypeID() {
+        return typeID;
+    }
+
+    public void setTypeID(int typeID) {
+        this.typeID = typeID;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getShowName() {
+        return showName;
+    }
+
+    public void setShowName(String showName) {
+        this.showName = showName;
+    }
+
+    public int getShowAds() {
+        return showAds;
+    }
+
+    public void setShowAds(int showAds) {
+        this.showAds = showAds;
+    }
+
+    public Date getShowDate() {
+        return showDate;
+    }
+
+    public void setShowDate(Date showDate) {
+        this.showDate = showDate;
+    }
+
+    public String getPicPath() {
+        return picPath;
+    }
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
+    }
+
+    public int getShowBuyId() {
+        return showBuyId;
+    }
+
+    public void setShowBuyId(int showBuyId) {
+        this.showBuyId = showBuyId;
+    }
+
+    public int getShowMbuy() {
+        return showMbuy;
+    }
+
+    public void setShowMbuy(int showMbuy) {
+        this.showMbuy = showMbuy;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     @Column(name = "show_date", columnDefinition = "datetime COMMENT '演出时间'")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date show_date;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mgs.comment.dao.CommentDao">
+    <select id="findAllCount" resultType="int">
+        select count(1) from comments
+    </select>
+    <select id="findAllLimnt" resultType="com.comm.comm.model.Comments" parameterType="com.mgs.comment.util.Pagecount">
+        select comments.c_id ,comments.content,
+        comments.comtime,user.user_name,
+        user.user_headphoto,show_base.show_name  from comments,user,show_base where
+        user.user_id =comments.user_id
+        <if test="show_id  != 0 or show_id   !=null">and comments.show_id = #{show_id}</if>
+        order by comments.comtime DESC limit #{pageall},#{size};
+    </select>
+
+    <select id="findCountByAid" resultType="int">
+        select count(1) from comments where comments.show_id = #{show_id}
+    </select>
+
+    <select id="findOneByACid" resultType="com.comm.comm.model.Comments" parameterType="int">
+        select comments.c_id ,comments.content,
+        comments.comtime,user.user_name,
+        user.user_headphoto,show_base.show_name  from comments,user,show_base where
+        user.user_id = comments.user_id
+        <if test="_parameter  != 0 or _parameter  !=null">and comments.show_id = #{show_id}</if>
+        order by comments.comtime DESC limit 0,3;
+    </select>
+
+    <insert id="add" parameterType="com.comm.comm.entity.Comment">
+        insert into comments(c_id,content,comtime,user_id,show_id)
+        values (#{c_id},#{content},#{comtime},#{user_id},#{show_id})
+    </insert>
+
+    <update id="updata" parameterType="com.comm.comm.entity.Comment">
+        update comments
+        <set>
+            <if test="content != null">content=#{content},</if>
+        </set>
+        where c_id = #{c_id}
+    </update>
+
+    <select id="findbyUidandAid" resultType="com.comm.comm.model.Comments" parameterType="com.comm.comm.entity.Comment">
+        select comments.c_id ,comments.content,
+        comments.comtime,user.user_name,
+        user.user_headphoto,show_base.show_name  from comments,user,show_base where
+		user.user_id = comments.user_id
+        and comments.show_id =#{show_id} and comments.user_id=#{user_id}
+        order by comments.comtime DESC;
+    </select>
+</mapper>

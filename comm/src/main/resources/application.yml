@@ -20,8 +20,8 @@ spring:
 #  filters: stat ,wall ,log4j
 ##connectProperties检测执行效率超过5000毫秒的Sql语句（检测慢Sql的记录）
 #    connectProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMills=5000
-#  jpa:
-#    database: mysql
-#    show-sql: true   #显示sql语句
-#    hibernate:
-#        ddl-auto: update #使用hibernate来自动更新表结构，如果数据表不存在，则自动创建，若果修改了表结构，在程序启动时，则执行表解耦股的同步更新
+  jpa:
+    database: mysql
+    show-sql: true   #显示sql语句
+    hibernate:
+        ddl-auto: update #使用hibernate来自动更新表结构，如果数据表不存在，则自动创建，若果修改了表结构，在程序启动时，则执行表解耦股的同步更新
